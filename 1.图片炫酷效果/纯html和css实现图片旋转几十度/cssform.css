@@ -1,0 +1,50 @@
+html, body {border: 0; margin: 0; padding: 0;}
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {background-color:gray; }
+.box{
+    margin-top: 100px;
+    margin-left: 200px;
+    width: 400px;
+    height: 400px;
+    float: left;
+    position: relative; 
+    overflow: hidden; 
+    text-align: center; 
+    border: 4px solid #fff;
+    perspective: 500px
+}
+.box .textdiv{
+    position: absolute; 
+    opacity: 0.8;
+    background-color: #fff; 
+    color: #111111;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+.box img{
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;
+    transition: 0.6s;
+}
+.box:hover img{
+    transform: rotateX(70deg);
+    transform-origin: center bottom 0; 
+}
+
+h3{
+    font-size: 20px;
+    margin-top: 30%;
+}
+
+p{
+    font-weight: 300; 
+    line-height: 20px; 
+    font-size: 14px; 
+    margin-bottom: 15px;
+}
