@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Canvas倒计时</title>
+<style>
+    body{
+        background-color: black;
+    }
+    #canvas{
+        position: absolute;
+    }
+    #Time{
+        position: absolute;
+        color: #ffffff;
+        top: 220px;
+        left: 220px;
+        font-size: 50px;
+    }
+</style>
+</head>
+<body>
+    <canvas id = "canvas" width="500" height="500"></canvas>
+    <div id = "Time">60</div>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var c = canvas.getContext("2d");
+        
+        c.strokeStyle = "#ffffff";
+        c.lineWidth = 17;
+        c.shadowBlur = 15;
+        c.shadowColor = "#ffffff";
+        function dTor(deg)
+        {
+            var fac = Math.PI/180;
+            return deg*fac;
+        }
+        var time = 270;
+        function gettime()
+        {
+            time = time-6;
+            return time;
+        }
+        function show(){
+            var t = gettime();
+            c.beginPath();
+            c.fillRect(0,0,500,500);
+            c.arc(250,250,140,dTor(270),dTor(t));
+            c.stroke();
+            if(document.getElementById("Time").innerText==0)
+            {
+                document.getElementById("Time").innerText = 60;
+            }
+            document.getElementById("Time").innerText = document.getElementById("Time").textContent-1;
+        }
+        setInterval(show,1000);
+    </script>
+</body>
+</html>

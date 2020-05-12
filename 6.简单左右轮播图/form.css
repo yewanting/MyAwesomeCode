@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.total{
+    height: 250px;
+    width: 655px;
+    overflow: hidden;
+}
+#banner{
+    height: 250px;
+    width: 3275px; /*655×4 = 3275*/
+}
+li{
+    float: left;
+    width: 655px;
+    height: 250px;
+    list-style: none;
+}
+img{
+    width: 100%;
+    height: 100%;
+}

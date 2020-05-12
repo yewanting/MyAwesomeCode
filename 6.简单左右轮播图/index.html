@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <div class="total">
+        <ul id = "banner">
+            <li><img src="lunbo1.png"></li>
+            <li><img src="lunbo2.png"></li>
+            <li><img src="lunbo3.png"></li>
+            <li><img src="lunbo4.png"></li>
+            <li><img src="lunbo1.png"></li>
+        </ul>
+    </div>
+
+    <script>
+        var curindex = 0
+        var maxlen = document.getElementById("banner").getElementsByTagName("li").length-1
+        var timer = null
+        timer = setInterval(change_auto,3000)
+        function change_auto(){
+            if(curindex<maxlen){
+                curindex++;
+                get_next();
+            }else
+            {
+                curindex = 0;
+                get_reset()
+            }
+        }
+        var width = 655
+        function get_next(){
+            var totalbanner = document.getElementById("banner")
+            totalbanner.style.marginLeft = "-"+width*curindex+"px"
+            totalbanner.style.transition = 0.3+"s"
+        }
+        function get_reset(){
+            var totalbanner = document.getElementById("banner")
+            totalbanner.style.marginLeft = "0px"
+            totalbanner.style.transition = "0s"
+        }
+    </script>
+</body>
+
+</html>
