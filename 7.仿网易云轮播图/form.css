@@ -1,0 +1,38 @@
+body{
+background-color: rgb(119,115,110);
+}
+
+ul{
+    list-style:none;
+    position: absolute;
+    padding:0;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    width:800px;
+    height:200px;
+}
+
+
+ul:hover{
+    cursor: pointer;
+}
+
+
+li{
+    float:left;
+    position: absolute;
+    left: 0px;
+    transition-duration: 0.4s;
+}
+
+div{
+    width:50px;
+    height:5px;
+    border:1px solid rgb(156,156,156);
+    bottom: -80px;
+    position:absolute;
+    background-color:white;
+}
