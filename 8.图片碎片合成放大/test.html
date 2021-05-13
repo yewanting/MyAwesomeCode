@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="test.css" rel="stylesheet">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <ul id = "total"></ul>
+    </body>
+</html>
+
+<script>
+    function pic(rows,cols,w,h)
+    {
+        document.getElementById("total").style["width"] = w+"px";
+    document.getElementById("total").style["height"] = h +"px";
+
+
+    for(var r = 0 ;r <rows ;r++)
+    {
+        for(var c = 0 ;c < cols;c++)
+        {
+            var tmpdiv = document.createElement("div");
+            tmpdiv.className = "divclass";
+            tmpdiv.style["backgroundImage"] = 'url(image/'+(r*cols+c+1) +'.jpg';
+            tmpdiv.style["transform"] = "scale(0.9)";
+            tmpdiv.style["width"] = w/cols +"px";
+            tmpdiv.style["height"] = h/rows +"px";
+
+
+            var tmpli = document.createElement("li");
+            tmpli.style["width"] = w/cols +"px";
+            tmpli.style["height"] = h/rows +"px";
+            tmpli.className = "liclass";
+            tmpli.style["left"] = Math.floor(w/cols) *c+'px';
+            tmpli.style["top"] = Math.floor(h/rows)*r+'px';
+
+            tmpli.style["transform"] = 'scale(0.9) rotate(' +(Math.random()*40-20)+'deg)'
+            +
+            'translateX(' +(40*c-80)+'px)'+
+            'translateY(' +(40*r-80)+'px)'
+
+            //0 1 2 3 4 
+            //这个transform的意思就是呢
+            //其中rotate是旋转随机的角度，这里的数字是可以随便自己给的，可以给30,40
+            //那么为什么要减掉一个数呢，因为这样能够让图片旋转的更好看一点，因为减一个数就可能会出现负数，旋转角度变化比较大，并且方向不同
+            //translate X元素在水平方向移动的距离
+            //负值向左运动，正值向右运动
+            //Y在垂直方向的距离
+            //负值向左，正值向右
+
+            tmpli.appendChild(tmpdiv);
+
+            document.getElementById("total").appendChild(tmpli);
+        }
+    }
+
+    var chan = true;
+    var liclick = document.getElementsByTagName("li");
+
+    for(let i = 0 ; i < liclick.length;i++)
+    {
+        liclick[i].addEventListener(
+            "click",
+            function(){
+                if(chan==true)
+                {
+                    var Img = liclick[i].children[0].style["backgroundImage"];
+                    //通过children来获取到子节点
+                    var Left = 0;
+                    var Top = 0;
+
+                    for(let j = 0 ; j < liclick.length;j++)
+                    {
+                        liclick[j].style["transform"] = 'rotate(0deg)'+
+                        'translateX(0)'+
+                        'translateY(0)'
+
+                        let lidiv  = liclick[j].children[0];
+                        lidiv.style["backgroundImage"] = Img;
+                        lidiv.style["background-size"] = w+"px "+h+"px";
+
+                        lidiv.style["backgroundPosition"] = (-Left)+"px "+(-Top)+"px"
+                        lidiv.style["transform"] = "scale(1)"
+
+                        Left += Math.floor(w/cols);
+
+                        if(Left>=w){
+                            Top += Math.floor(h/rows)
+                            Left = 0;
+                        }
+                    }
+                    chan = false;
+                }else
+                if(chan == false)
+                {
+                    for(let j = 0 ; j < liclick.length;j++)
+                    {
+                        let r = Math.floor(j/rows);
+                        let c = j-r*cols;
+                        let lidiv = liclick[j].children[0];
+                        lidiv.style["background-size"] = "100% 100%";
+                        lidiv.style["backgroundImage"] = 'url(image/'+(r*cols+c+1) +'.jpg';
+                        liclick[j].style["transform"] = 'scale(0.9) rotate(' +(Math.random()*40-20)+'deg)'+
+                        'translateX(' +(40*c-80)+'px)'+
+                        'translateY(' +(40*r-80)+'px)'
+                    }
+                    chan = true
+                }
+            },
+            false
+        )
+    }
+    }
+
+    pic(5,5,980,800)
+</script>

@@ -1,0 +1,25 @@
+body{
+	background-color: #c1e3fa;
+}
+
+ul{
+	list-style: none;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	/* border: 1px solid red; */
+}
+
+.liclass{
+	position: absolute;
+	background-color: #fff;
+	transition: transform 1500ms ease-out;
+}
+
+.divclass{
+	background-size: 100% 100%;
+	transition: transform 1500ms ease-out;
+}
